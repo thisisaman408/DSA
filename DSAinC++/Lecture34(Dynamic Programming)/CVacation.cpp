@@ -3,49 +3,51 @@
 #include <algorithm>
 using namespace std;
 
-// int sum = 0;
-// int temp;
-// int countA = 1, countB = 1, countC = 1;
-// int f(int n, vector<vector<int>> &h)
-// {
-//     for (int i = 0; i < n; i++)
-//     {
+int sum = 0;
+int temp;
+int countA = 1, countB = 1, countC = 1;
+//this solution is wrong
+//use bottom up approach for it, as done in main function
+int f(int n, vector<vector<int>> &h)
+{
+    for (int i = 0; i < n; i++)
+    {
 
-//         temp = max({h[i][0], h[i][1], h[i][2]});
-//         if (temp == h[i][0])
-//         {
-//             countA++;
-//             cout << "A : " << countA << " ";
-//             if (countA <= 2)
-//                 sum += h[i][0];
-//             cout << sum << " ";
+        temp = max({h[i][0], h[i][1], h[i][2]});
+        if (temp == h[i][0])
+        {
+            countA++;
+            cout << "A : " << countA << " ";
+            if (countA <= 2)
+                sum += h[i][0];
+            cout << sum << " ";
 
-//             countB = 0;
-//             countC = 0;
-//         }
-//         if (temp == h[i][1])
-//         {
-//             countB++;
-//             cout << "B :" << countB << " ";
-//             if (countB <= 2)
-//                 sum += h[i][1];
-//             cout << sum << " ";
-//             countA = 0;
-//             countB = 0;
-//         }
-//         if (temp == h[i][2])
-//         {
-//             countC++;
-//             cout << "C :" << countC << " ";
-//             if (countC <= 2)
-//                 sum += h[i][2];
-//             cout << sum << " ";
-//             countA = 0;
-//             countB = 0;
-//         }
-//     }
-//     return sum;
-// }
+            countB = 0;
+            countC = 0;
+        }
+        if (temp == h[i][1])
+        {
+            countB++;
+            cout << "B :" << countB << " ";
+            if (countB <= 2)
+                sum += h[i][1];
+            cout << sum << " ";
+            countA = 0;
+            countB = 0;
+        }
+        if (temp == h[i][2])
+        {
+            countC++;
+            cout << "C :" << countC << " ";
+            if (countC <= 2)
+                sum += h[i][2];
+            cout << sum << " ";
+            countA = 0;
+            countB = 0;
+        }
+    }
+    return sum;
+}
 
 int main()
 {

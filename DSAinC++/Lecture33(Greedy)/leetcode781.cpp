@@ -51,7 +51,7 @@ public:
 int main()
 {
     Solution sol;
-    vector<int> answers = {1, 0, 1, 0, 0};
+    vector<int> answers = {1,1,2};
     cout << sol.numRabbits(answers);
 
     return 0;

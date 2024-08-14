@@ -40,8 +40,8 @@ X−Y.
 
 using namespace std;
 
-vector<vector<ll>> dp(3005, vector<ll>(3005, -1));
-vector<ll> arr(3005);
+vector<vector<ll>> dp(100009, vector<ll>(100009, -1));
+vector<ll> arr(100009);
 ll f(int i, int j)
 {
     if (i == j) return arr[i];
@@ -56,22 +56,22 @@ int main()
     cout << f(0, n - 1);
 }
 
-int main()
-{
-    int n;
-    cin >> n;
-    dp.clear();
+// int main()
+// {
+//     int n;
+//     cin >> n;
+//     dp.clear();
 
-    for (int i = 0; i < n; i++) cin >> arr[i];
-    for (int i = 0; i < n; i++) dp[i][i] = arr[i];
+//     for (int i = 0; i < n; i++) cin >> arr[i];
+//     for (int i = 0; i < n; i++) dp[i][i] = arr[i];
 
-    for (int len = 2; len <= n; len++)
-    {
-        for (int i = 0; i <= n - len; i++)
-        {
-            int j = i + len - 1;
-            dp[i][j] = max(arr[i] - dp[i + 1][j], arr[j] - dp[i][j - 1]);
-        }
-    }
-    cout << dp[0][n - 1] << endl;
-}
+//     for (int len = 2; len <= n; len++)
+//     {
+//         for (int i = 0; i <= n - len; i++)
+//         {
+//             int j = i + len - 1;
+//             dp[i][j] = max(arr[i] - dp[i + 1][j], arr[j] - dp[i][j - 1]);
+//         }
+//     }
+//     cout << dp[0][n - 1] << endl;
+// }

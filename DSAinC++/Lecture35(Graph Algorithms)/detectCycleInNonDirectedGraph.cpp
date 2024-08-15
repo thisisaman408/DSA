@@ -40,11 +40,7 @@ bool Union(unordered_map<int, int> &parent, unordered_map<int, int> &rank, int a
     {
         if (rank[rootA] < rank[rootB]) parent[rootA] = rootB;
         else if (rank[rootA] > rank[rootB])  parent[rootB] = rootA;
-        else
-        {
-            parent[rootB] = rootA;
-            rank[rootA]++;
-        }
+        else {  parent[rootB] = rootA; rank[rootA]++;}
     }
     return false;
 }
@@ -78,7 +74,7 @@ int main()
             parent[b] = b;
             rank[b] = 0;
         }
-        x = Union(parent, rank, a, b);
+       x = Union(parent, rank, a, b);
        if(x) {cout<<"Cycle detected"; x = false;}
     }
     if(x) cout<<"No cycle found";

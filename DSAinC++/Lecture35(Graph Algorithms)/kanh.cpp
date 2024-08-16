@@ -38,8 +38,7 @@ void indegreeCalc()
 {
     for (int i = 0; i < v; i++)
     {
-        for (auto x : graph[i])
-            indegree[x]++;
+        for (auto x : graph[i]) indegree[x]++;
     }
 }
 

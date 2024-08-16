@@ -67,7 +67,6 @@ int main() {
     cin>>v;
     int e;
     cin>>e;
-    unordered_set<int> visited;
     graph.resize(v,list<int>());
     while(e--){
         int x,y;

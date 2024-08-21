@@ -20,24 +20,13 @@ public:
         {
             int ni = i + dx;
             int nj = j + dy;
-
-            // Ensure the neighbor is within bounds
             if (ni >= 0 && ni < rows && nj >= 0 && nj < cols)
             {
-                // Ensure the neighbor has the same character
                 if (grid[ni][nj] == grid[i][j])
                 {
-                    // If the neighbor is the parent cell, continue
-                    if (ni == pi && nj == pj)
-                        continue;
-
-                    // If the neighbor is visited and is not the parent, a cycle is found
-                    if (visited[ni][nj])
-                        return true;
-
-                    // Recursively perform DFS on the neighbor
-                    if (dfs(grid, ni, nj, i, j))
-                        return true;
+                    if (ni == pi && nj == pj) continue;
+                    if (visited[ni][nj]) return true;
+                    if (dfs(grid, ni, nj, i, j)) return true;
                 }
             }
         }

@@ -26,7 +26,7 @@ public:
             visited[cr][cc] = true;
             q.push({cr, cc});
             
-            for (auto& dir : directions) {
+            for(auto& dir : directions) {
                 stk.push({cr + dir[0], cc + dir[1]});
             }
         }
@@ -76,7 +76,7 @@ public:
                         if (grid[nr][nc] == 1 && !visited[nr][nc]) {
                             return bridgeLength;
                         }
-                        if (grid[nr][nc] == 0 && !visited[nr][nc]) {
+                        if (grid[nr][nc] == 0 && !visited[nr][nc]){
                             visited[nr][nc] = true;
                             q.push({nr, nc});
                         }
@@ -84,9 +84,8 @@ public:
                 }
             }
             bridgeLength++;
-            //we are incrementing bridgelength as soon as our first bfs call ends, basically first layer ends
+        //we are incrementing bridgelength as soon as our first bfs call ends, basically first layer ends
         }
-        
         return -1;  // Just a fallback in case something goes wrong
     }
 };

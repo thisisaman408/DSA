@@ -102,14 +102,14 @@ int main() {
             cout << find(parent, x) << endl;
         }
     }
-    unordered_map<int,int> sizeOfEachConnComp;
-    for(int i = 0; i<n;i++){
-        sizeOfEachConnComp[find(parent,i)]++;
-    }
+    // unordered_map<int,int> sizeOfEachConnComp;
+    // for(int i = 1; i<=n;i++){
+    //     sizeOfEachConnComp[find(parent,i)]++;
+    // }
 
-    for(auto x : sizeOfEachConnComp){
-        cout<<x.first<<": "<< x.first<<" ";
-    }
+    // for(auto x : sizeOfEachConnComp){
+    //     cout<<x.first<<": "<< x.second<<endl;
+    // }
 
     return 0;
 }

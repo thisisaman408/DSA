@@ -1,0 +1,30 @@
+Data Structures:
+Visited Set
+priority_queue<pair<int, int>>
+unordered_map
+
+
+-Algorithm:
+Initialize: Insert <0, src> into the priority queue.
+
+
+-Process Queue:
+Pop the root element.
+If already visited, skip it.
+
+
+-Mark as visited.
+Add weight to the answer.
+
+
+-Update the mapping.
+
+-Explore Neighbors:
+
+-For each neighbor:
+If not visited and offers better weight, push it into the queue.
+
+
+
+
+

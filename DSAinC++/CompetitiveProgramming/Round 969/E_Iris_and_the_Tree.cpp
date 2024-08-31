@@ -2,13 +2,14 @@
 #include<vector>
 using namespace std;
 
+//this solution is wrong right now!
+
 const int MAXN = 2e5 + 10;
 vector<int> tree[MAXN];
 int depth[MAXN];
 int weight[MAXN];
 int n, q;
 
-// DFS to calculate depth of each node
 void dfs(int u, int par, int d) {
     depth[u] = d;
     for (int v : tree[u]) {
@@ -18,16 +19,14 @@ void dfs(int u, int par, int d) {
     }
 }
 
-// Calculate the maximum possible distance sum after updates
 void calculate_max_distance_sum() {
     long long max_distance_sum = 0;
     for (int i = 1; i <= n; i++) {
-        int j = (i % n) + 1;
-        // Adjust i and j for 1-based indexing
+        int j = (i % n) + i;
         int distance = abs(depth[i] - depth[j]);
         max_distance_sum += distance;
     }
-    cout << max_distance_sum << '\n';
+    cout << max_distance_sum << endl;
 }
 
 int main() {
@@ -39,7 +38,7 @@ int main() {
 
     while (t--) {
         cin >> n;
-        vector<int> parent(n + 1);
+        vector<int> parent(n + 1,1);
         for (int i = 2; i <= n; i++) {
             cin >> parent[i];
             tree[parent[i]].push_back(i);
@@ -55,11 +54,7 @@ int main() {
             queries[i] = {x, y};
         }
 
-        for (auto& query : queries) {
-            // Here we would handle updates if necessary
-            // For now, we simply calculate max distance sum after all updates
-            calculate_max_distance_sum();
-        }
+        for (auto& query : queries)  calculate_max_distance_sum();
     }
 
     return 0;

@@ -51,8 +51,7 @@ vector<vector<int>> dp;
 
 int f(int i, int j, vector<int> &arr)
 {
-    if (i == j || i + 1 == j)
-        return 0;
+    if (i == j || i + 1 == j) return 0;
     int res = INT_MAX;
     if (dp[i][j] != -1)
         return dp[i][j];
@@ -60,7 +59,7 @@ int f(int i, int j, vector<int> &arr)
     {
         res = min(res, f(i, k, arr) + f(k, j, arr) + arr[i] * arr[j] * arr[k]);
         // partition banaye hain k se, i se lekar k tak ka ans, k se lekr j tak ka ans, and then ye dono (i-k) & (k-j) tak ki matrix
-        //  mai v to milkar ek matrix banegi, unke element muliplication hoga, arr[i]arr[j]arr[k];
+        //ye current v to milkar ek matrix banegi, unke element muliplication hoga, arr[i]arr[j]arr[k];
     }
 
     return dp[i][j] = res;
@@ -75,8 +74,7 @@ int main()
     dp.resize(1005, vector<int>(1005, -1));
 
     vector<int> v(n);
-    for (int i = 0; i < n; i++)
-        cin >> v[i];
+    for (int i = 0; i < n; i++) cin >> v[i];
 
     // We should initialize dp[i][i] to 0 because the cost of multiplying one matrix is zero.
     // for (int i = 0; i < n; i++)

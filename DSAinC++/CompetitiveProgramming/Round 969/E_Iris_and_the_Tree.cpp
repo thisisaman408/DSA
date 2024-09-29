@@ -1,60 +1,60 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <cstring>
+
 using namespace std;
 
-//this solution is wrong right now!
+const int MAXN = 200001;
+int fa[MAXN], dep[MAXN];
+int c1[MAXN], c2[MAXN], len[MAXN];
 
-const int MAXN = 2e5 + 10;
-vector<int> tree[MAXN];
-int depth[MAXN];
-int weight[MAXN];
-int n, q;
+//solved by Aman -> thisisaman408
 
-void dfs(int u, int par, int d) {
-    depth[u] = d;
-    for (int v : tree[u]) {
-        if (v != par) {
-            dfs(v, u, d + 1);
+#define ll long long
+#define lli long long int
+
+void solve() {
+    int N;
+    ll w;
+    cin >> N >> w;
+
+    for (int i = 2; i <= N; ++i) cin >> fa[i]; 
+    for (int i = 2; i <= N; ++i) dep[i] = dep[fa[i]] + 1; 
+
+    for (int i = 1; i <= N; ++i) len[i] = c1[i] = 0;
+    for (int i = 1; i <= N; ++i) {
+        int x = i, y = (i == N ? 1 : i + 1);
+        while (x != y) {
+            if (dep[x] < dep[y]) swap(x, y);  
+            (c1[x] ? c2[x] : c1[x]) = i;  
+            x = fa[x];
+            ++len[i]; 
         }
     }
-}
 
-void calculate_max_distance_sum() {
-    long long max_distance_sum = 0;
-    for (int i = 1; i <= n; i++) {
-        int j = (i % n) + i;
-        int distance = abs(depth[i] - depth[j]);
-        max_distance_sum += distance;
+    ll sum = 0, sur = N;
+    for (int i = 1; i < N; ++i) {
+        int x;
+        ll cost;
+        cin >> x >> cost;
+        sum += cost;
+
+        if ((--len[c1[x]]) == 0) --sur; 
+        if ((--len[c2[x]]) == 0) --sur;
+        cout << sum * 2 + sur * (w - sum) << (i == N - 1 ? '\n' : ' ');
     }
-    cout << max_distance_sum << endl;
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t;
-    cin >> t;
-
+    ll t = 1;
+    cin >> t;  
     while (t--) {
-        cin >> n;
-        vector<int> parent(n + 1,1);
-        for (int i = 2; i <= n; i++) {
-            cin >> parent[i];
-            tree[parent[i]].push_back(i);
-            tree[i].push_back(parent[i]);
-        }
-
-        dfs(1, -1, 0);
-
-        vector<pair<int, int>> queries(n - 1);
-        for (int i = 0; i < n - 1; i++) {
-            int x, y;
-            cin >> x >> y;
-            queries[i] = {x, y};
-        }
-
-        for (auto& query : queries)  calculate_max_distance_sum();
+        solve();
     }
 
     return 0;

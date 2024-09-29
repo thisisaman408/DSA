@@ -66,6 +66,7 @@ void Union(unordered_map<int,int>& parent, unordered_map<int,int>& rank, int a,i
 int main() {
     int n, m;
     cin >> n >> m;
+    //no of vertices and edges respectively
 
     unordered_map<int, int> parent;
     unordered_map<int, int> rank;
